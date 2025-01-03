@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب تصميم مخصص</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .lang-switch {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .lang-switch a {
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .lang-switch a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-switch">
+            <a href="?lang=ar" id="switch-ar">العربية</a> |
+            <a href="?lang=en" id="switch-en">English</a>
+        </div>
+        <h1>طلب تصميم مخصص</h1>
+        <form action="https://formspree.io/f/mnqkzrrl" method="post" enctype="multipart/form-data">
+            <label for="name">اسم الهوية:</label>
+            <input type="text" id="name" name="name" required placeholder="يرجى إدخال اسمك">
+
+            <label for="type">النوع:</label>
+            <select id="type" name="type" required>
+                <option value="بلاستيك">بلاستيك</option>
+                <option value="خشب">خشب</option>
+            </select>
+
+            <label for="power">القوة:</label>
+            <select id="power" name="power" required>
+                <option value="12V">12V</option>
+                <option value="24V">24V</option>
+                <option value="220V">220V</option>
+            </select>
+
+            <label for="lighting">الأضاءة:</label>
+            <select id="lighting" name="lighting" required>
+                <option value="كبير">كبير</option>
+                <option value="متوسط">متوسط</option>
+                <option value="ضعيف">ضعيف</option>
+            </select>
+
+            <label for="color">لون الأضاءة:</label>
+            <select id="color" name="color" required>
+                <option value="أبيض">أبيض</option>
+                <option value="بنفسيجي">بنفسيجي</option>
+                <option value="دافئ أبيض">دافئ أبيض</option>
+                <option value="وردي">وردي</option>
+                <option value="ثلجي أبيض">ثلجي أبيض</option>
+                <option value="أخضر">أخضر</option>
+            </select>
+
+            <label for="mounting">طريقة التثبيت:</label>
+            <select id="mounting" name="mounting" required>
+                <option value="الحائط في تثبيت">الحائط في تثبيت</option>
+                <option value="الحائط في تعليق">الحائط في تعليق</option>
+                <option value="طاولة قاعدة">طاولة قاعدة</option>
+            </select>
+
+            <label for="size">حجم وشكل المنتج:</label>
+            <textarea id="size" name="size" rows="3" placeholder="يرجى تحديد التفاصيل"></textarea>
+
+            <label for="identity">صورة الهوية:</label>
+            <input type="file" id="identity" name="identity" accept="image/*" required>
+
+            <button type="submit">إرسال الطلب</button>
+        </form>
+    </div>
+</body>
+<script>
+    // Detect language from URL and toggle form labels
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang') || 'ar';
+
+    if (lang === 'en') {
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+        document.querySelector('h1').textContent = 'Custom Design Request';
+        document.querySelector('[for="name"]').textContent = 'Name:';
+        document.querySelector('[for="type"]').textContent = 'Material Type:';
+        document.querySelector('[for="power"]').textContent = 'Power:';
+        document.querySelector('[for="lighting"]').textContent = 'Lighting Intensity:';
+        document.querySelector('[for="color"]').textContent = 'Lighting Color:';
+        document.querySelector('[for="mounting"]').textContent = 'Mounting Method:';
+        document.querySelector('[for="size"]').textContent = 'Product Size & Shape:';
+        document.querySelector('[for="identity"]').textContent = 'Identity Image:';
+        document.querySelector('button').textContent = 'Submit Request';
+        document.querySelector('#switch-ar').textContent = 'Arabic';
+        document.querySelector('#switch-en').textContent = 'English';
+    }
+</script>
+</html>
